@@ -1,4 +1,5 @@
 using System.Text;
+using Il2CppSystem;
 using SanguinePact.Common.Commands.Converters;
 using ProjectM;
 using VampireCommandFramework;
@@ -26,7 +27,7 @@ internal class SanguinePactCommands
 		}
 		if (Core.SanguinePactService.ToggleSanguinePact(charEntity))
 		{
-			ctx.Reply($"Sanguine Pact ON for <color=white>{name}</color>. Deal and take more damage.");
+			ctx.Reply($"Sanguine Pact ON for <color=white>{name}</color>. Deal {Plugin.DamageMultiplier.Value}x damage. Take {Plugin.ResistMultiplier.Value}x damage.");
 		}
 		else
 		{

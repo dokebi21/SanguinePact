@@ -117,11 +117,13 @@ namespace SanguinePact.SanguinePact.Services
 		}
 		public static List<ModifyUnitStatBuff_DOTS> CreateSanguinePactBuffs()
 		{
+			var resistMultiplier = (Plugin.ResistMultiplier.Value - 1) * -1;
+			var damageMultiplier = Plugin.DamageMultiplier.Value;
 
 			ModifyUnitStatBuff_DOTS spResistVsUndeads = new()
 			{
 				StatType = UnitStatType.ResistVsUndeads,
-				Value = Plugin.ResistMultiplier.Value,
+				Value = resistMultiplier,
 				ModificationType = ModificationType.Set,
 				Modifier = 1,
 				Id = ModificationId.NewId(0)
@@ -130,7 +132,7 @@ namespace SanguinePact.SanguinePact.Services
 			ModifyUnitStatBuff_DOTS spResistVsHumans = new()
 			{
 				StatType = UnitStatType.ResistVsHumans,
-				Value = Plugin.ResistMultiplier.Value,
+				Value = resistMultiplier,
 				ModificationType = ModificationType.Set,
 				Modifier = 1,
 				Id = ModificationId.NewId(0)
@@ -139,7 +141,7 @@ namespace SanguinePact.SanguinePact.Services
 			ModifyUnitStatBuff_DOTS spResistVsDemons = new()
 			{
 				StatType = UnitStatType.ResistVsDemons,
-				Value = Plugin.ResistMultiplier.Value,
+				Value = resistMultiplier,
 				ModificationType = ModificationType.Set,
 				Modifier = 1,
 				Id = ModificationId.NewId(0)
@@ -148,7 +150,7 @@ namespace SanguinePact.SanguinePact.Services
 			ModifyUnitStatBuff_DOTS spResistVsMechanical = new()
 			{
 				StatType = UnitStatType.ResistVsMechanical,
-				Value = Plugin.ResistMultiplier.Value,
+				Value = resistMultiplier,
 				ModificationType = ModificationType.Set,
 				Modifier = 1,
 				Id = ModificationId.NewId(0)
@@ -157,7 +159,7 @@ namespace SanguinePact.SanguinePact.Services
 			ModifyUnitStatBuff_DOTS spResistVsBeasts = new()
 			{
 				StatType = UnitStatType.ResistVsBeasts,
-				Value = Plugin.ResistMultiplier.Value,
+				Value = resistMultiplier,
 				ModificationType = ModificationType.Set,
 				Modifier = 1,
 				Id = ModificationId.NewId(0)
@@ -166,7 +168,7 @@ namespace SanguinePact.SanguinePact.Services
 			ModifyUnitStatBuff_DOTS spResistVsVampires = new()
 			{
 				StatType = UnitStatType.ResistVsVampires,
-				Value = Plugin.ResistMultiplier.Value,
+				Value = resistMultiplier,
 				ModificationType = ModificationType.Set,
 				Modifier = 1,
 				Id = ModificationId.NewId(0)
@@ -175,7 +177,7 @@ namespace SanguinePact.SanguinePact.Services
 			ModifyUnitStatBuff_DOTS spDamageVsUndeads = new()
 			{
 				StatType = UnitStatType.DamageVsUndeads,
-				Value = Plugin.DamageMultiplier.Value,
+				Value = damageMultiplier,
 				ModificationType = ModificationType.Set,
 				Modifier = 1,
 				Id = ModificationId.NewId(0)
@@ -184,7 +186,7 @@ namespace SanguinePact.SanguinePact.Services
 			ModifyUnitStatBuff_DOTS spDamageVsHumans = new()
 			{
 				StatType = UnitStatType.DamageVsHumans,
-				Value = Plugin.DamageMultiplier.Value,
+				Value = damageMultiplier,
 				ModificationType = ModificationType.Set,
 				Modifier = 1,
 				Id = ModificationId.NewId(0)
@@ -193,7 +195,7 @@ namespace SanguinePact.SanguinePact.Services
 			ModifyUnitStatBuff_DOTS spDamageVsDemons = new()
 			{
 				StatType = UnitStatType.DamageVsDemons,
-				Value = Plugin.DamageMultiplier.Value,
+				Value = damageMultiplier,
 				ModificationType = ModificationType.Set,
 				Modifier = 1,
 				Id = ModificationId.NewId(0)
@@ -202,7 +204,7 @@ namespace SanguinePact.SanguinePact.Services
 			ModifyUnitStatBuff_DOTS spDamageVsMechanical = new()
 			{
 				StatType = UnitStatType.DamageVsMechanical,
-				Value = Plugin.DamageMultiplier.Value,
+				Value = damageMultiplier,
 				ModificationType = ModificationType.Set,
 				Modifier = 1,
 				Id = ModificationId.NewId(0)
@@ -211,7 +213,7 @@ namespace SanguinePact.SanguinePact.Services
 			ModifyUnitStatBuff_DOTS spDamageVsBeasts = new()
 			{
 				StatType = UnitStatType.DamageVsBeasts,
-				Value = Plugin.DamageMultiplier.Value,
+				Value = damageMultiplier,
 				ModificationType = ModificationType.Set,
 				Modifier = 1,
 				Id = ModificationId.NewId(0)
@@ -220,7 +222,7 @@ namespace SanguinePact.SanguinePact.Services
 			ModifyUnitStatBuff_DOTS spDamageVsVampires = new()
 			{
 				StatType = UnitStatType.DamageVsVampires,
-				Value = Plugin.DamageMultiplier.Value,
+				Value = damageMultiplier,
 				ModificationType = ModificationType.Set,
 				Modifier = 1,
 				Id = ModificationId.NewId(0)
