@@ -1,4 +1,5 @@
 ﻿using BepInEx;
+using BepInEx.Logging;
 using BepInEx.Unity.IL2CPP;
 using HarmonyLib;
 using VampireCommandFramework;
@@ -10,11 +11,16 @@ namespace SanguinePact;
 public class Plugin : BasePlugin
 {
     Harmony _harmony;
+    public static ManualLogSource LogInstance { get; private set; }
 
     public override void Load()
     {
+        if (Application.productName != "VRisingServer")
+            return;
+
         // Plugin startup logic
         Log.LogInfo($"Plugin {MyPluginInfo.PLUGIN_GUID} version {MyPluginInfo.PLUGIN_VERSION} is loaded!");
+        LogInstance = Log;
 
         // Harmony patching
         _harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
@@ -30,23 +36,4 @@ public class Plugin : BasePlugin
         _harmony?.UnpatchSelf();
         return true;
     }
-
-    // // Uncomment for example commmand or delete
-
-    // /// <summary> 
-    // /// Example VCF command that demonstrated default values and primitive types
-    // /// Visit https://github.com/decaprime/VampireCommandFramework for more info 
-    // /// </summary>
-    // /// <remarks>
-    // /// How you could call this command from chat:
-    // ///
-    // /// .sanguinepact-example "some quoted string" 1 1.5
-    // /// .sanguinepact-example boop 21232
-    // /// .sanguinepact-example boop-boop
-    // ///</remarks>
-    // [Command("sanguinepact-example", description: "Example command from sanguinepact", adminOnly: true)]
-    // public void ExampleCommand(ICommandContext ctx, string someString, int num = 5, float num2 = 1.5f)
-    // { 
-    //     ctx.Reply($"You passed in {someString} and {num} and {num2}");
-    // }
 }
