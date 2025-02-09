@@ -29,7 +29,6 @@ Once the mod installed, a configuration file will be created in the \BepInEx\con
 
 ## Future Plans
 
-- Allow owners to configure defense and offense multipliers.
 - Allow owners to configure messages.
 
 ## Credits
