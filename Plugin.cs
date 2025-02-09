@@ -15,11 +15,11 @@ public class Plugin : BasePlugin
     internal static Harmony Harmony;
     public static ManualLogSource LogInstance { get; private set; }
 
-    private const float DefaultResistMultiplier = 4; // Take 4x damage
     private const float DefaultDamageMultiplier = 2; // Deal 2x damage
+    private const float DefaultResistMultiplier = 4; // Take 4x damage
 
-    public static ConfigEntry<float> ResistMultiplier;
     public static ConfigEntry<float> DamageMultiplier;
+    public static ConfigEntry<float> ResistMultiplier;
 
     public override void Load()
     {
@@ -41,8 +41,8 @@ public class Plugin : BasePlugin
 
     private void InitConfig()
     {
-        ResistMultiplier = Config.Bind("ResistMultiplier", "multiplier", DefaultResistMultiplier, "Resist multiplier. 4 means 4x damage.");
         DamageMultiplier = Config.Bind("DamageMultiplier", "multiplier", DefaultDamageMultiplier, "Damage multiplier. 2 means 2x damage.");
+        ResistMultiplier = Config.Bind("ResistMultiplier", "multiplier", DefaultResistMultiplier, "Resist multiplier. 4 means 4x damage.");
     }
 
     public override bool Unload()
