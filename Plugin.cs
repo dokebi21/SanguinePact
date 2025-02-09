@@ -1,4 +1,5 @@
 ﻿using BepInEx;
+using BepInEx.Configuration;
 using BepInEx.Logging;
 using BepInEx.Unity.IL2CPP;
 using HarmonyLib;
@@ -10,8 +11,14 @@ namespace SanguinePact;
 [BepInDependency("gg.deca.VampireCommandFramework")]
 public class Plugin : BasePlugin
 {
-    Harmony _harmony;
+    internal static Harmony Harmony;
     public static ManualLogSource LogInstance { get; private set; }
+
+    private const float DefaultResistMultiplier = -4.0f; // Take 400% more damage
+    private const float DefaultDamageMultiplier = 2.0f; // Deal 100% more damage
+
+    public static ConfigEntry<float> ResistMultiplier;
+    public static ConfigEntry<float> DamageMultiplier;
 
     public override void Load()
     {
@@ -23,17 +30,25 @@ public class Plugin : BasePlugin
         LogInstance = Log;
 
         // Harmony patching
-        _harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
-        _harmony.PatchAll(System.Reflection.Assembly.GetExecutingAssembly());
+        Harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
+        Harmony.PatchAll(System.Reflection.Assembly.GetExecutingAssembly());
 
         // Register all commands in the assembly with VCF
         CommandRegistry.RegisterAll();
+        InitConfig();
+    }
+
+    private void InitConfig()
+    {
+        ResistMultiplier = Config.Bind("ResistMultiplier", "multiplier", DefaultResistMultiplier, "Resist multiplier. -4 means 400% more damage.");
+        DamageMultiplier = Config.Bind("DamageMultiplier", "multiplier", DefaultDamageMultiplier, "Damage multiplier. 2 means 100% more damage.");
+        Log.LogInfo($"Loaded Sanguine Pact Multipliers: Resist={ResistMultiplier.Value}, Damage={DamageMultiplier.Value}");
     }
 
     public override bool Unload()
     {
         CommandRegistry.UnregisterAssembly();
-        _harmony?.UnpatchSelf();
+        Harmony.UnpatchSelf();
         return true;
     }
 }

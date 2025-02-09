@@ -46,6 +46,7 @@ internal static class Core
         ServerScriptMapper = Server.GetExistingSystemManaged<ServerScriptMapper>();
 
         Players = new();
+        SanguinePactService = new();
 
         _hasInitialized = true;
         Log.LogInfo($"{nameof(InitializeAfterLoaded)} completed");
