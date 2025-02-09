@@ -8,13 +8,13 @@ namespace SanguinePact.SanguinePact.Commands;
 [CommandGroup(name: "sanguinepact", "sgp")]
 internal class SanguinePactCommands
 {
-	[Command("toggle", "t", description: "Toggle sanguine pact.", adminOnly: false)]
+	[Command("toggle", "t", description: "Toggle Sanguine Pact on or off.", adminOnly: false)]
 	public static void ToggleSanguinePact(ChatCommandContext ctx)
 	{
 		ToggleSanguinePactForPlayer(ctx);
 	}
 
-	[Command("toggleplayer", "tp", description: "Toggle sanguine pact for player", adminOnly: true)]
+	[Command("toggleplayer", "tp", description: "Toggle Sanguine Pact on or off for player.", adminOnly: true)]
 	public static void ToggleSanguinePactForPlayer(ChatCommandContext ctx, OnlinePlayer player = null)
 	{
 		var name = player?.Value.UserEntity.Read<User>().CharacterName ?? ctx.Event.User.CharacterName;
@@ -35,7 +35,7 @@ internal class SanguinePactCommands
 		Core.SanguinePactService.UpdateSanguinePactPlayer(charEntity);
 	}
 
-	[Command("list", "l", description: "List players in sanguine pact", adminOnly: false)]
+	[Command("list", "l", description: "List players in Sanguine Pact.", adminOnly: false)]
 	public static void ListSanguinePactPlayers(ChatCommandContext ctx)
 	{
 		var pactPlayers = Core.SanguinePactService.GetSanguinePactPlayers();
