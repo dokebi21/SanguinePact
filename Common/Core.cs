@@ -70,7 +70,7 @@ internal static class Core
     {
         if (monoBehaviour == null)
         {
-            var go = new GameObject("SanguineArchives");
+            var go = new GameObject("SanguinePact");
             monoBehaviour = go.AddComponent<IgnorePhysicsDebugSystem>();
             Object.DontDestroyOnLoad(go);
         }

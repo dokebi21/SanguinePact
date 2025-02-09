@@ -1,7 +1,7 @@
 ![](icon.png)
 # SanguinePact for V Rising
 
-SanguineArchives is a server mod for V Rising. Trade defense for offense.
+SanguinePact is a server mod for V Rising. Trade defense for offense.
 
 You can reach out to me on the V Rising Mod Community Discord (dokebi) for issues, questions, or suggestions.
 
